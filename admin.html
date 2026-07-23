@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>لوحة التحكم | MFCV</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">MFCV</a>
+  <div class="admin-title">لوحة التحكم</div>
+  <a class="admin-link" href="index.html">عرض الموقع</a>
+</header>
+
+<main class="admin-wrap">
+  <section id="loginBox" class="panel login-panel">
+    <div class="eyebrow">MFCV ADMIN</div><h1>دخول لوحة التحكم</h1>
+    <p>كلمة المرور الافتراضية: <b>123456</b></p>
+    <input id="passwordInput" type="password" placeholder="اكتب كلمة المرور">
+    <button class="btn primary" onclick="login()">دخول</button>
+    <p id="loginError" class="error"></p>
+  </section>
+
+  <section id="dashboard" class="dashboard hidden">
+    <div class="dashboard-head">
+      <div><h1>إدارة السيرة الذاتية</h1><p>عدّل البيانات ثم اضغط حفظ.</p></div>
+      <div class="actions"><button class="btn primary" onclick="saveData()">حفظ التعديلات</button><button class="btn" onclick="resetData()">استعادة البيانات الافتراضية</button></div>
+    </div>
+
+    <div class="panel">
+      <h2>البيانات الشخصية</h2>
+      <div class="grid two">
+        <label>الاسم<input id="name" type="text"></label>
+        <label>المسمى الوظيفي<input id="role" type="text"></label>
+        <label>البريد الإلكتروني<input id="email" type="email"></label>
+        <label>رقم الجوال<input id="phone" type="text"></label>
+        <label>الموقع<input id="location" type="text"></label>
+        <label>رابط السيرة الذاتية PDF<input id="cvUrl" type="url" placeholder="ضع رابط PDF بعد رفعه"></label>
+      </div>
+      <label>النبذة<textarea id="bio"></textarea></label>
+      <label>العنوان التعريفي<textarea id="headline"></textarea></label>
+      <label>صورة شخصية<input id="photoFile" type="file" accept="image/*"></label>
+      <img id="photoPreview" class="admin-photo" alt="">
+    </div>
+
+    <div class="panel">
+      <h2>الإحصائيات</h2>
+      <div class="grid four">
+        <label>سنوات الخبرة<input id="years" type="text"></label>
+        <label>المشاريع<input id="projectsCount" type="text"></label>
+        <label>الشهادات<input id="certificatesCount" type="text"></label>
+        <label>الالتزام<input id="commitment" type="text"></label>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="section-head"><h2>الخبرات</h2><button class="btn" onclick="addExperience()">+ إضافة خبرة</button></div>
+      <div id="experienceEditor"></div>
+    </div>
+
+    <div class="panel">
+      <div class="section-head"><h2>التعليم والمؤهلات</h2><button class="btn" onclick="addEducation()">+ إضافة مؤهل</button></div>
+      <div id="educationEditor"></div>
+    </div>
+
+    <div class="panel">
+      <div class="section-head"><h2>الشهادات والدورات</h2><button class="btn" onclick="addCertificate()">+ إضافة شهادة</button></div>
+      <p class="hint">يمكنك رفع صورة أو PDF. التخزين المحلي مناسب للتجربة على جهازك؛ للنشر العام تحتاج خدمة تخزين وقاعدة بيانات.</p>
+      <div id="certificateEditor"></div>
+    </div>
+
+    <div class="panel">
+      <div class="section-head"><h2>المهارات</h2><button class="btn" onclick="addSkill()">+ إضافة فئة</button></div>
+      <div id="skillsEditor"></div>
+    </div>
+
+    <div class="panel">
+      <div class="section-head"><h2>المشاريع والإنجازات</h2><button class="btn" onclick="addProject()">+ إضافة مشروع</button></div>
+      <div id="projectsEditor"></div>
+    </div>
+
+    <div class="panel">
+      <h2>الأمان</h2>
+      <p class="hint">هذه النسخة تستخدم كلمة مرور داخل المتصفح وليست حماية حقيقية للخادم. غيّرها في ملف <code>admin.js</code> قبل النشر، ولحماية فعلية استخدم Firebase/Supabase.</p>
+      <label>كلمة المرور الجديدة<input id="newPassword" type="password" placeholder="اختياري"></label>
+      <button class="btn" onclick="changePassword()">تغيير كلمة المرور</button>
+    </div>
+  </section>
+</main>
+<script src="admin.js"></script>
+</body>
+</html>
